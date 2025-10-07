@@ -1,5 +1,10 @@
 import express from "express";
-import { getJoyas, getJoyasHATEOAS, getJoyasPorFiltros } from "./consultas.js";
+import {
+  getJoyas,
+  getJoyasHATEOAS,
+  getJoyasPorFiltros,
+  getJoyaPorId,
+} from "./consultas.js";
 import validateQuery from "../middlewares/validateQueryMiddleware.js";
 
 const router = express.Router();
@@ -17,6 +22,15 @@ router.get("/joyas/filtros", async (req, res, next) => {
   try {
     const joyas = await getJoyasPorFiltros(req.query);
     res.json(joyas);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/joyas/:id", async (req, res, next) => {
+  try {
+    const joya = await getJoyaPorId(req.params.id);
+    res.json(joya);
   } catch (error) {
     next(error);
   }

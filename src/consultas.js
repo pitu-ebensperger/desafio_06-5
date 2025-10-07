@@ -5,10 +5,12 @@ import { appConfig, dbConfig } from "../config/env.js";
 const { Pool } = pg;
 const pool = new Pool(dbConfig);
 
-const BASE_URL =
+const rawBaseUrl =
   process.env.NODE_ENV === "production"
     ? process.env.DOMAIN_URL_APP || appConfig.domainUrl
     : appConfig.domainUrl;
+
+const BASE_URL = String(rawBaseUrl || "").replace(/\/+$/, "");
 
 const ALLOWED_ORDER_COLUMNS = [
   "id",
@@ -110,4 +112,27 @@ export const getJoyasPorFiltros = async ({
 
   const { rows } = await pool.query(consulta, values);
   return rows;
+};
+
+export const getJoyaPorId = async (idParam) => {
+  const id = Number(idParam);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    const error = new Error("ID de joya inválido");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const { rows } = await pool.query(
+    "SELECT * FROM inventario WHERE id = $1",
+    [id]
+  );
+
+  if (!rows.length) {
+    const error = new Error("Joya no encontrada");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  return rows[0];
 };
