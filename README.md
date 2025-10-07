@@ -1,6 +1,5 @@
-# Desafío 4 - Tienda de Joyas
-Curso Backend con Node y Express (G90) - 5 Diseño avanzado API REST
-
+# Desafío 6 - Tienda de Joyas
+Curso Backend con Node y Express (G90) - 5 Autenticación y Autorización de usuarios con JWT
 
 ### Descripción
 
@@ -16,3 +15,4 @@ Crear API REST que permita:
 5. Estructura de datos HATEOAS
 
 
+*(!) Crear .env desde .env.example para testear proyecto.*

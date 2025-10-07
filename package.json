@@ -1,0 +1,33 @@
+{
+  "name": "joyeria",
+  "version": "1.0.0",
+  "description": "Curso Backend con Node y Express (G90) - 5 Diseño avanzado API REST",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pitu-ebensperger/desafio_06-5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pitu-ebensperger/desafio_06-5/issues"
+  },
+  "homepage": "https://github.com/pitu-ebensperger/desafio_06-5#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "pg-format": "^1.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
